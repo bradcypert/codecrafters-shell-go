@@ -10,13 +10,12 @@ const notFound = ": not found"
 func Type(args ...string) {
 	builtins := [...]string{"echo", "exit", "type"}
 	target := args[0]
-
 	for _, b := range builtins {
 		if b == target {
-			fmt.Printf("%s%s", target, builtin)
+			fmt.Printf("%s%s\n", target, builtin)
 			return
 		}
 	}
 
-	fmt.Printf("%s%s", target, notFound)
+	fmt.Printf("%s%s\n", target, notFound)
 }

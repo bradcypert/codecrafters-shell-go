@@ -16,6 +16,7 @@ func main() {
 	for {
 		fmt.Fprint(os.Stdout, "$ ")
 		c, err := stdin.ReadString('\n')
+		c = strings.TrimRight(c, "\n")
 		if err != nil {
 			os.Exit(1)
 		}
