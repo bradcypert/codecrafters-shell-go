@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/codecrafters-io/shell-starter-go/cmd/myshell/commands"
 )
 
 func main() {
@@ -13,11 +15,22 @@ func main() {
 	stdin := bufio.NewReader(os.Stdin)
 	for {
 		fmt.Fprint(os.Stdout, "$ ")
-		command, err := stdin.ReadString('\n')
+		c, err := stdin.ReadString('\n')
 		if err != nil {
 			os.Exit(1)
 		}
-		fmt.Printf("%s: command not found\n", strings.TrimRight(command, "\n"))
+
+		cmd := strings.Split(c, " ")
+		command := cmd[0]
+		args := cmd[1:]
+
+		switch command {
+		case "exit":
+			commands.Exit(args...)
+
+		default:
+			fmt.Printf("%s: command not found\n", strings.TrimRight(command, "\n"))
+		}
 	}
 
 }
