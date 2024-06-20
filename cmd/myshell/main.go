@@ -34,7 +34,11 @@ func main() {
 			commands.Type(args...)
 
 		default:
-			fmt.Printf("%s: command not found\n", strings.TrimRight(command, "\n"))
+			// assume trying to execute external program
+			err := commands.Execute(command, args...)
+			if err != nil {
+				fmt.Printf("%s: command not found\n", strings.TrimRight(command, "\n"))
+			}
 		}
 	}
 
