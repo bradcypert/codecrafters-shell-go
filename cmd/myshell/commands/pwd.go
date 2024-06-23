@@ -6,7 +6,7 @@ import (
 )
 
 func Pwd(args ...string) error {
-	path, err := os.Executable()
+	path, err := os.Getwd()
 	if err != nil {
 		return err
 	}
