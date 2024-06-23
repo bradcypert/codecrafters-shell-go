@@ -32,6 +32,8 @@ func main() {
 			commands.Echo(args...)
 		case "type":
 			commands.Type(args...)
+		case "pwd":
+			commands.Pwd(args...)
 
 		default:
 			// assume trying to execute external program

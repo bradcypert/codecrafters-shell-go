@@ -10,14 +10,14 @@ import (
 const builtin = " is a shell builtin"
 const notFound = ": not found"
 
-func Type(args ...string) {
+func Type(args ...string) error {
 	builtins := [...]string{"echo", "exit", "type"}
 
 	target := args[0]
 	for _, b := range builtins {
 		if b == target {
 			fmt.Printf("%s%s\n", target, builtin)
-			return
+			return nil
 		}
 	}
 
@@ -32,10 +32,11 @@ func Type(args ...string) {
 			searchPath := filepath.Join(f, target)
 			if _, err := os.Stat(searchPath); err == nil {
 				fmt.Printf("%s is %s\n", target, searchPath)
-				return
+				return nil
 			}
 		}
 	}
 
 	fmt.Printf("%s%s\n", target, notFound)
+	return nil
 }
