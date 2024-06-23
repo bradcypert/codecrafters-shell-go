@@ -11,7 +11,7 @@ const builtin = " is a shell builtin"
 const notFound = ": not found"
 
 func Type(args ...string) error {
-	builtins := [...]string{"echo", "exit", "type", "pwd"}
+	builtins := [...]string{"echo", "exit", "type", "pwd", "cd"}
 
 	target := args[0]
 	for _, b := range builtins {

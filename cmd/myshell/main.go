@@ -34,6 +34,8 @@ func main() {
 			commands.Type(args...)
 		case "pwd":
 			commands.Pwd(args...)
+		case "cd":
+			commands.Chdir(args...)
 
 		default:
 			// assume trying to execute external program
